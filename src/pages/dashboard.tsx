@@ -7,7 +7,7 @@ const pages: React.FC = () => {
 
   return (
     <div>
-      <h1>Dashboard {user?.email}</h1>
+      <h1>Dashboarde {user?.email}</h1>
     </div>
   )
 }
