@@ -2,6 +2,7 @@ import axios, { AxiosError } from 'axios'
 
 import { parseCookies, setCookie } from 'nookies'
 import { logOutCredentials } from '../contexts/AuthContext'
+import { AuthTokenError } from './errors/AuthTokenError'
 
 let isRefreshing = false
 let failedRequestsQueue = []
@@ -83,6 +84,8 @@ export function setupAPIClient(ctx = undefined) {
         } else {
           if (process.browser) {
             logOutCredentials()
+          } else {
+            return Promise.reject(new AuthTokenError())
           }
         }
       }
