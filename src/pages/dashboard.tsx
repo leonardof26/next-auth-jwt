@@ -1,15 +1,22 @@
 import React, { useContext } from 'react'
 
 import { AuthContext } from '../contexts/AuthContext'
+import { useCan } from '../hooks/useCan'
 import { setupAPIClient } from '../services/api'
 import { withSSRAuth } from '../utils/withSSRAuth'
 
 const pages: React.FC = () => {
   const { user } = useContext(AuthContext)
 
+  const userCanSeeMetrics = useCan({ permissions: ['metrics.list'] })
+
   return (
     <div>
-      <h1>Dashboarde {user?.email}</h1>
+      <>
+        <h1>Dashboarde {user?.email}</h1>
+
+        {!!userCanSeeMetrics && <div>Métricas</div>}
+      </>
     </div>
   )
 }
