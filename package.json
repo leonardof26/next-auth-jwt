@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "broadcast-channel": "^3.7.0",
     "jwt-decode": "^3.1.2",
     "next": "10.2.0",
     "nookies": "^2.5.2",

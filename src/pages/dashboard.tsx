@@ -7,12 +7,14 @@ import { withSSRAuth } from '../utils/withSSRAuth'
 import { Can } from '../components/Can'
 
 const pages: React.FC = () => {
-  const { user } = useContext(AuthContext)
+  const { user, logOutCredentials } = useContext(AuthContext)
 
   return (
     <div>
       <>
         <h1>Dashboarde {user?.email}</h1>
+
+        <button onClick={logOutCredentials}>Sign Out</button>
 
         <Can permissions={['metrics.list']}>
           <div>Métricas</div>
